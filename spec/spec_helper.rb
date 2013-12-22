@@ -7,7 +7,7 @@ set :environment, :test
 
 RSpec.configure do |conf|
   conf.color_enabled = true
-  config.tty = true
+  conf.tty = true
   conf.include Rack::Test::Methods
 
   conf.before(:suite) do
