@@ -1,8 +1,28 @@
-require "rspec/core/rake_task"
+task :environment do
+  require './app'
+end
 
 desc "Run those specs"
-  task :spec do
-    RSpec::Core::RakeTask.new(:spec) do |t|
-      t.rspec_opts = %w{--colour --format documentation}
+task :spec do
+  require "rspec/core/rake_task"
+  RSpec::Core::RakeTask.new(:spec) do |t|
+    t.rspec_opts = %w{--colour --format documentation}
+  end
+end
+
+namespace :db do
+  desc "Drop db data"
+  task :drop => :environment do
+    Treasure.destroy_all
+  end
+
+  desc "Seed db data"
+  task :seed => :environment do
+    require 'pry-debugger'
+    if Treasure.count == 0 
+      Dir.glob('assets/images/*.jpg') do |image_url|
+        Treasure.create!(name: File.basename(image_url, ".*"), url: image_url)
+      end
     end
+  end
 end
