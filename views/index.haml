@@ -1,0 +1,101 @@
+!!!
+%html
+  %head
+    %title Bootstrap 101 Template
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    / Bootstrap
+    %link{href: "assets/css/bootstrap.min.css", rel: "stylesheet"}/
+    :css
+      body {
+        padding-top: 50px;
+      }
+      .starter-template {
+        padding: 40px 15px;
+        text-align: center;
+      }
+
+  %body
+    .navbar.navbar-default.navbar-fixed-top{:role => "navigation"}
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{:href => "#"} Android Bootcamp
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li.active
+              %a{:href => "#"} Home
+            %li
+              %a{:href => "#about"} Treasures
+    .container
+      .starter-template
+        %h1 Android Bootcamp REST server
+        %p.lead
+          Where we're gonna store our treasures!
+        
+      .page-header 
+        %h1 API
+      %h3
+        Treasures
+      %h4
+        %small Treasures are our images with EXIF data attached.
+
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Resource
+            %th Type
+            %th Description
+        %tbody
+          %tr
+            %td.text-primary 
+              %a{:href => "/treasures"} 
+                %strong /treasures
+            %td GET
+            %td Returns an array of all treasures from the database
+          %tr
+            %td.text-primary 
+              %a{:href => "/treasures/random/10"} 
+                %strong /treasures/random/:count
+            %td GET
+            %td Returns an array of :count randomly selected treasures from the database
+
+          %tr
+            %td.text-primary 
+              %a{:href => "/treasures/near?latitude=151.2338&longitude=-33.917169&distance=1"} 
+                %strong /treasures/near?latitude=:a&longitude=:b&distance=:c
+            %td GET
+            %td Returns an array of :count randomly selected treasures from the database
+
+
+      .page-header 
+        %h1 Data
+      %table.table.table-hover
+        %thead
+          %tr
+            %th ID
+            %th Address
+            %th Latitude
+            %th Longitude
+            %th URL
+        %tbody
+          - @treasures.each do |treasure|
+            %tr
+              %td 
+                = treasure.id
+              %td 
+                = treasure.address
+              %td 
+                = '%.3f' % treasure.coordinates[1]
+              %td 
+                = '%.3f' % treasure.coordinates[0]
+              %td
+                %a{:href => "#{treasure.url.sub('public/', "")}"}
+                  = "#{treasure.url.sub('public/', "")}"
+
+
+    %script{src: "https://code.jquery.com/jquery.js"}
+    %script{src: "assets/js/bootstrap.min.js"}

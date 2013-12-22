@@ -1,14 +1,26 @@
-This is a my base setup for Sinatra, Rspec and Twitter Bootstrap.
+Android Bootcamp REST server
+============================
 
-I use chruby, but if you don't feel free to remove the .ruby-version and .rvm file (if you aren't using rvm)
+Install
+-------
 
-To get running, run
+brew install mongo
 
-```
-git clone https://github.com/jmkelly/sinatra-rspec-bootstrap.git
-cd sinatra-rspec-bootstrap
+git clone https://github.com/dbousamra/android-bootcamp-rest-server
+
+cd android-bootcamp-rest-server
+
 bundle install
-ruby application.rb
-```
 
-Then open http://localhost:4567/
+Run
+---
+
+cd android-bootcamp-rest-server
+
+Start the database server
+
+mongod
+
+ruby app.rb
+
+Browse to http://localhost:4567/
