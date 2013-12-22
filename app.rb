@@ -1,10 +1,11 @@
-require 'sinatra'
+require "sinatra"
+require 'json'
 require "sinatra/reloader" if development?
 
-get '/' do
-  erb :login, :layout => :index 
+before do
+  content_type :json
 end
 
-get '/login' do 
-  erb :login, :layout => :index
+get '/' do
+  { :key1 => 'value1', :key2 => 'value2' }.to_json
 end
