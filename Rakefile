@@ -18,7 +18,6 @@ namespace :db do
 
   desc "Seed db data"
   task :seed => :environment do
-    require 'pry-debugger'
     if Treasure.count == 0 
       Dir.glob('public/images/*.jpg') do |image_url|
         Treasure.create!(name: File.basename(image_url, ".*"), url: image_url)

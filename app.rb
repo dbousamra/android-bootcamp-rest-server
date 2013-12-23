@@ -3,7 +3,6 @@ require 'json'
 require 'sinatra/reloader' if development?
 require 'mongo_mapper'
 require 'haml'
-require 'pry-debugger'
 
 MongoMapper.database = 'treasures'
 set :public_folder, 'public'
@@ -38,7 +37,6 @@ end
 class Treasure
   require 'exifr'
   require 'geocoder'
-  require 'pry-debugger'
   include MongoMapper::Document
   include Geocoder::Model::MongoMapper
 

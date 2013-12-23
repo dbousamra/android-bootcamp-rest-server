@@ -6,10 +6,12 @@ gem "json"
 gem "geocoder"
 gem "exifr"
 gem "haml"
+gem "bson_ext"
 
 group :development, :test  do
   gem "rspec"
   gem "rack-test"
   gem 'pry'
+  gem "sinatra-contrib"
 end
 
