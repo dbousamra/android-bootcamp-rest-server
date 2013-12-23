@@ -19,7 +19,7 @@ end
 
 get '/treasures/random/:count' do |count|
   content_type :json
-  Treasure.all.sample(3).to_json
+  Treasure.all.sample(count).to_json
 end
 
 get '/treasures/near' do
