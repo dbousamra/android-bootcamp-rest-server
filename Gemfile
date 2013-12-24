@@ -7,6 +7,7 @@ gem "geocoder"
 gem "exifr"
 gem "haml"
 gem "bson_ext"
+gem "faker"
 
 group :development, :test  do
   gem "rspec"
@@ -14,6 +15,5 @@ group :development, :test  do
   gem "pry"
   gem "sinatra-contrib"
   gem "database_cleaner"
-  gem "faker"
 end
 
