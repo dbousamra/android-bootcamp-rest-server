@@ -18,9 +18,17 @@ namespace :db do
 
   desc "Seed db data"
   task :seed => :environment do
+    require 'faker'
+
     if Treasure.count == 0 
       Dir.glob('public/images/*.jpg') do |image_url|
         Treasure.create!(name: File.basename(image_url, ".*"), url: image_url)
+      end
+    end
+
+    if Player.count == 0 
+      10.times do
+        Player.create!(name: Faker::Name.name)
       end
     end
   end

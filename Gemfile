@@ -11,7 +11,9 @@ gem "bson_ext"
 group :development, :test  do
   gem "rspec"
   gem "rack-test"
-  gem 'pry'
+  gem "pry"
   gem "sinatra-contrib"
+  gem "database_cleaner"
+  gem "faker"
 end
 

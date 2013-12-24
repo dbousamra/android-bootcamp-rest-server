@@ -72,7 +72,7 @@
 
 
       .page-header 
-        %h1 Data
+        %h1 Treasures
       %table.table.table-hover
         %thead
           %tr
@@ -96,6 +96,27 @@
                 %a{:href => "#{treasure.url.sub('public/', "")}"}
                   = "#{treasure.url.sub('public/', "")}"
 
+      .page-header 
+        %h1 Players
+      %table.table.table-hover
+        %thead
+          %tr
+            %th ID
+            %th Name
+            %th Score
+            %th Game Version
+        %tbody
+          - @players.each do |player|
+            %tr
+              %td 
+                = player.id
+              %td 
+                = player.name
+              %td 
+                = player.score
+              %td 
+                = player.game_version
+        
 
     %script{src: "https://code.jquery.com/jquery.js"}
     %script{src: "assets/js/bootstrap.min.js"}

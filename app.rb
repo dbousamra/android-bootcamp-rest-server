@@ -9,6 +9,7 @@ set :public_folder, 'public'
 
 get '/' do
   @treasures = Treasure.all
+  @players = Player.all
   haml :index
 end
 
@@ -33,6 +34,22 @@ get '/treasures/near' do
     Treasure.all.to_json
   end
 end
+
+class Player
+  include MongoMapper::Document
+
+  key :name,         String,  required: true
+  key :score,        Integer, numeric:  true, default: 0
+  key :game_version, Integer, required: true
+
+  validate :positive
+
+  private
+  def positive
+    errors.add(:score, "Score must be 0 or greater") if score < 0
+  end
+end
+
 
 class Treasure
   require 'exifr'
