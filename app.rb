@@ -6,9 +6,13 @@ require 'haml'
 
 configure :production do
   MongoMapper.setup({'production' => {'uri' => ENV['MONGOLAB_URI']}}, 'production')
+  MongoMapper.database = URI.parse(ENV['MONGOLAB_URI']).path.gsub(/^\//, '')
 end
 
-# MongoMapper.database = 'treasures'
+configure :development, :test do
+  MongoMapper.database = 'treasures'
+end
+
 set :public_folder, 'public'
 
 get '/' do
