@@ -14,6 +14,7 @@ namespace :db do
   desc "Drop db data"
   task :drop => :environment do
     Treasure.destroy_all
+    Player.destroy_all
   end
 
   desc "Seed db data"

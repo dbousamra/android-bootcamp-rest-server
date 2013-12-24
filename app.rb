@@ -5,7 +5,7 @@ require 'mongo_mapper'
 require 'haml'
 
 configure :production do
-  set :db_uri, ENV['MONGOLAB_URI']
+  MongoMapper.setup({'production' => {'uri' => ENV['MONGODB_URI']}}, 'production')
 end
 
 MongoMapper.database = 'treasures'
