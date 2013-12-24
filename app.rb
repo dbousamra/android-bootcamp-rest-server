@@ -13,14 +13,34 @@ get '/' do
   haml :index
 end
 
+get '/players' do
+  content_type :json
+  Player.all.to_json
+end
+
+get '/players/:id' do |id|
+  content_type :json
+  Player.find(id).to_json
+end
+
+get '/players/top/:count' do |count|
+  content_type :json
+  Player.sort(:score.desc).limit(count.to_i).to_json
+end
+
 get '/treasures' do
   content_type :json
   Treasure.all.to_json
 end
 
+get '/treasures/:id' do |id|
+  content_type :json
+  Treasure.find(id).to_json
+end
+
 get '/treasures/random/:count' do |count|
   content_type :json
-  Treasure.all.sample(count).to_json
+  Treasure.all.sample(count.to_i).to_json
 end
 
 get '/treasures/near' do

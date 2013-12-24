@@ -56,6 +56,13 @@
                 %strong /treasures
             %td GET
             %td Returns an array of all treasures from the database
+
+          %tr
+            %td.text-primary 
+              %a{:href => "/treasures/52b8ee6c4adfdcfc73000001"} 
+                %strong /treasures/:id
+            %td GET
+            %td Returns the treasure with :id from the database
           %tr
             %td.text-primary 
               %a{:href => "/treasures/random/10"} 
@@ -68,7 +75,39 @@
               %a{:href => "/treasures/near?latitude=151.2338&longitude=-33.917169&distance=1"} 
                 %strong /treasures/near?latitude=:a&longitude=:b&distance=:c
             %td GET
-            %td Returns an array all treasures near a location. It takes 3 parameters, latitude, longitude and distance. If distance is omitted, it defaults to 10km.
+            %td Returns an array of all treasures near a location. It takes 3 parameters, latitude, longitude and distance. If distance is omitted, it defaults to 10km.
+
+      %h3
+        Players
+      %h4
+        %small Players are our players in the game
+
+      %table.table.table-hover
+        %thead
+          %tr
+            %th Resource
+            %th Type
+            %th Description
+        %tbody
+          %tr
+            %td.text-primary 
+              %a{:href => "/players"} 
+                %strong /players
+            %td GET
+            %td Returns an array of all players from the database
+          %tr
+            %td.text-primary 
+              %a{:href => "/players/52b8ee6c4adfdcfc73000001"} 
+                %strong /players/:id
+            %td GET
+            %td Returns the player with :id from the database
+
+          %tr
+            %td.text-primary 
+              %a{:href => "/players/top/2"} 
+                %strong /players/top/:count
+            %td GET
+            %td Returns an array of the top :count players from the database
 
 
       .page-header 

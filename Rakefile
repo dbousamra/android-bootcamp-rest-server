@@ -28,7 +28,7 @@ namespace :db do
 
     if Player.count == 0 
       10.times do
-        Player.create!(name: Faker::Name.name)
+        Player.create!(name: Faker::Name.name, game_version: 1)
       end
     end
   end
