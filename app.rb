@@ -4,6 +4,10 @@ require 'sinatra/reloader' if development?
 require 'mongo_mapper'
 require 'haml'
 
+configure :production do
+  set :db_uri, ENV['MONGOLAB_URI']
+end
+
 MongoMapper.database = 'treasures'
 set :public_folder, 'public'
 
