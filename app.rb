@@ -8,7 +8,7 @@ configure :production do
   MongoMapper.setup({'production' => {'uri' => ENV['MONGOLAB_URI']}}, 'production')
 end
 
-MongoMapper.database = 'treasures'
+# MongoMapper.database = 'treasures'
 set :public_folder, 'public'
 
 get '/' do
