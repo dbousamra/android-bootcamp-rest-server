@@ -36,6 +36,15 @@ get '/players/top/:count' do |count|
   Player.sort(:score.desc).limit(count.to_i).to_json
 end
 
+post '/players/:id/score' do |id|
+  content_type :json
+  data = JSON.parse request.body.read
+  p = Player.find(id)
+  p.score = data["score"] if data["score"]
+  p.save!
+  p.to_json
+end
+
 get '/treasures' do
   content_type :json
   Treasure.all.to_json

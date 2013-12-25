@@ -41,7 +41,6 @@ describe 'API' do
       it "returns JSON representing all players" do
         get '/players'
           last_response.body.should == [@p1, @p2].to_json
-
       end
     end
 
@@ -58,6 +57,16 @@ describe 'API' do
         p4 = Player.create!(name: "Top scorer two", game_version: 1, score: 2)
         get "/players/top/2"
           last_response.body.should == [p3, p4].to_json
+      end
+    end
+
+    describe "/players/score" do
+      it "accepts JSON representing a score and increases the players score" do
+        score = { score: 10 }.to_json
+          post "/players/#{@p1.id}/score", score
+            p1_with_score_increased = Player.find(@p1.id)
+            last_response.body.should == p1_with_score_increased.to_json
+            p1_with_score_increased.score.should == 10
       end
     end
   end

@@ -109,6 +109,13 @@
             %td GET
             %td Returns an array of the top :count players from the database
 
+          %tr
+            %td.text-primary 
+              %a{:href => "/players/52b8ee6c4adfdcfc73000001/score"} 
+                %strong /players/:id/score
+            %td POST
+            %td Sets the score on a player using the data { score: 12 }. Returns the player with :id with the score incremented by the POST.
+
 
       .page-header 
         %h1 Treasures
