@@ -42,6 +42,13 @@ describe 'API' do
         get '/players'
           last_response.body.should == [@p1, @p2].to_json
       end
+
+      it "accepts JSON representing a new player and creates a new player, returning the created player with ID" do
+          player_to_create = { name: "Dom", game_version: 1 }.to_json
+          post "/players",  player_to_create
+            created_player = Player.where(name: "Dom").first
+            last_response.body.should == created_player.to_json
+      end
     end
 
     describe "/players/:id" do

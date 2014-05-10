@@ -26,6 +26,15 @@ get '/players' do
   Player.all.to_json
 end
 
+post '/players' do 
+  content_type :json
+  data = JSON.parse request.body.read
+  p = Player.new(name: data["name"], game_version: data["game_version"])
+  p.score = data["score"] if data["score"]
+  p.save!
+  p.to_json
+end
+
 get '/players/:id' do |id|
   content_type :json
   Player.find(id).to_json

@@ -97,18 +97,22 @@
             %td Returns an array of all players from the database
           %tr
             %td.text-primary 
+              %a{:href => "/players"} 
+                %strong /players
+            %td POST
+            %td Returns an array of all players from the database
+          %tr
+            %td.text-primary 
               %a{:href => "/players/52b8ee6c4adfdcfc73000001"} 
                 %strong /players/:id
             %td GET
-            %td Returns the player with :id from the database
-
+            %td Creates a new player using the data { name: "Dom", game_version: 1 }. Score is optional. Returns the newly created player
           %tr
             %td.text-primary 
               %a{:href => "/players/top/2"} 
                 %strong /players/top/:count
             %td GET
             %td Returns an array of the top :count players from the database
-
           %tr
             %td.text-primary 
               %a{:href => "/players/52b8ee6c4adfdcfc73000001/score"} 
