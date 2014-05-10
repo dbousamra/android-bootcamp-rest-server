@@ -4,8 +4,8 @@ describe 'API' do
   describe "Treasures routes" do
 
     before :each do
-      @t1 = Treasure.create!(url: "public/images/yow.jpg", coordinates: [151.209055, -33.863016])
-      @t2 = Treasure.create!(url: "public/images/yow.jpg", coordinates: [151.209055, -33.863016])
+      @t1 = Treasure.create!(url: "public/images/Treasures1.jpg", coordinates: [151.209055, -33.863016])
+      @t2 = Treasure.create!(url: "public/images/Treasures1.jpg", coordinates: [151.209055, -33.863016])
     end
 
     describe "/treasures" do
