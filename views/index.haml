@@ -100,7 +100,7 @@
               %a{:href => "/players"} 
                 %strong /players
             %td POST
-            %td Creates a new player using the data { name: "Dom", game_version: 1 }. Score is optional. Returns the newly created player
+            %td Creates a new player using the data { "name": "Dom", "game_version": 1 }. Score is optional. Returns the newly created player
           %tr
             %td.text-primary 
               %a{:href => "/players/52b8ee6c4adfdcfc73000001"} 
@@ -118,7 +118,7 @@
               %a{:href => "/players/52b8ee6c4adfdcfc73000001/score"} 
                 %strong /players/:id/score
             %td POST
-            %td Sets the score on a player using the data { score: 12 }. Returns the player with :id with the score incremented by the POST.
+            %td Sets the score on a player using the data { "score": 12 }. Returns the player with :id with the score incremented by the POST.
 
 
       .page-header 
